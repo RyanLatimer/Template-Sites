@@ -1,525 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Faux Company Website</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    /* Global Styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #ffffff;
-      color: #333;
+    <!-- ...existing meta tags... -->
+    
+    <!-- Remove Bootstrap CSS since we're using Tailwind exclusively -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease-out forwards',
+            'scale-in': 'scaleIn 0.6s ease-out forwards',
+            'slide-down': 'slideDown 0.5s ease-out'
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            scaleIn: {
+              '0%': { transform: 'scale(0.95)', opacity: '0' },
+              '100%': { transform: 'scale(1)', opacity: '1' }
+            },
+            slideDown: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
     }
-
-    /* Minimalist yet animated fade-in */
-    .fade-in {
-      animation: fadeIn 2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Navigation Bar Styles */
-    .navbar {
-      background-color: #f9f9f9;
-      border-bottom: 1px solid #eaeaea;
-    }
-    .navbar-brand {
-      font-weight: 500;
-      font-size: 1.5rem;
-      color: #333;
-    }
-    .navbar-nav .nav-link {
-      font-weight: 400;
-      padding: 0.5rem 1rem;
-      color: #555;
-    }
-    .navbar-nav .nav-link.active,
-    .navbar-nav .nav-link:hover {
-      color: #007bff;
-    }
-
-    /* Hero Section */
-    header#hero {
-      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-      padding: 6rem 1rem;
-    }
-    header#hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #222;
-    }
-    header#hero p {
-      font-size: 1.25rem;
-      color: #555;
-    }
-    header#hero .btn {
-      background-color: #007bff;
-      border: none;
-      font-weight: 500;
-    }
-
-    /* Section Headings */
-    section h2 {
-      color: #222;
-    }
-
-    /* Card Style */
-    .card {
-      border: none;
-      background-color: #fafafa;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-    .card-title {
-      font-weight: 500;
-      color: #333;
-    }
-    .card-text {
-      font-weight: 300;
-      color: #555;
-    }
-
-    /* Minimalist Form Styling */
-    form {
-      background-color: #fff;
-      border: 1px solid #eaeaea;
-      border-radius: 8px;
-      padding: 2rem;
-    }
-    form .form-control {
-      border-radius: 4px;
-      border: 1px solid #ddd;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #f1f1f1;
-      border-top: 1px solid #eaeaea;
-    }
-    footer p {
-      color: #666;
-    }
-
-    /* Artistic Map Styling */
-    .styled-map iframe {
-      border: 5px solid #ddd;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 100%;
-      height: 400px;
-    }
-  </style>
+    </script>
 </head>
-<body class="font-sans text-gray-800">
 
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Faux Company</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbarNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-lg shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">
+                    Local Harvest
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-emerald-600 transition-all hover:-translate-y-0.5">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-emerald-600 transition-all hover:-translate-y-0.5">About</a>
+                    <a href="#menu" class="text-gray-700 hover:text-emerald-600 transition-all hover:-translate-y-0.5">Menu</a>
+                    <a href="#blog" class="text-gray-700 hover:text-emerald-600 transition-all hover:-translate-y-0.5">Blog</a>
+                    <a href="#contact" class="text-gray-700 hover:text-emerald-600 transition-all hover:-translate-y-0.5">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <header id="hero" class="container mx-auto px-4 fade-in">
-    <div class="text-center">
-      <h1 class="text-5xl font-bold mb-4">Welcome to Faux Company</h1>
-      <p class="text-xl mb-6">We deliver personalized service and innovative solutions to help your business thrive. Experience our community-driven approach today.</p>
-      <a href="#about" class="btn btn-primary btn-lg">Discover More</a>
-    </div>
-  </header>
+    <!-- Hero Section -->
+    <header id="home" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 bg-[url('your-hero-image.jpg')] bg-cover bg-fixed bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
+        <div class="container mx-auto px-6 relative z-10 animate-fade-up">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Welcome to Local Harvest</h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-200">A cozy local haven celebrating community, tradition, and the freshest farm-to-table experiences.</p>
+                <a href="#about" class="inline-block px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full text-white font-semibold hover:from-emerald-700 hover:to-emerald-800 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Discover Our Story
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4 fade-in">
-      <h2 class="text-4xl font-semibold text-center mb-10">About Us</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <p class="lead text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nullam ac erat ante. Sed sit amet mauris vitae urna efficitur finibus.
-          </p>
-          <p class="mt-4 text-center">
-            Donec vitae urna quis libero tincidunt fermentum. Nam eleifend, leo vitae congue posuere, nisi quam cursus dui, nec bibendum turpis dolor et odio. Our company has been at the forefront of innovation, providing top-notch services to our clients and building lasting partnerships.
-          </p>
-          <p class="mt-4 text-center">
-            Over the years, we have expanded our services to meet our community’s needs and embraced the latest technologies so that we not only remain competitive, but also serve as a trusted partner to our neighbors. Thank you for choosing Faux Company – your success is our mission.
-          </p>
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">About Us</h2>
+                <div class="prose prose-lg mx-auto">
+                    <p class="lead text-xl text-gray-600 mb-8">
+                        Since 2010, Local Harvest has been more than just a restaurant—it's a celebration of our community's agricultural heritage and sustainable future.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-12 mt-12">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4">Our Philosophy</h3>
+                            <p class="text-gray-600">We believe in the power of locally-sourced ingredients, supporting local farmers, and creating memorable dining experiences that connect people to their food's origins.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4">Farm to Table</h3>
+                            <p class="text-gray-600">Every ingredient tells a story. We partner with over 20 local farms to bring you the freshest seasonal produce, ethically-raised meats, and artisanal products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-16">
-    <div class="container mx-auto px-4 fade-in">
-      <h2 class="text-4xl font-semibold text-center mb-10">Our Services</h2>
-      <div class="row">
-        <!-- Consulting Service -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Consulting</h5>
-              <p class="card-text">
-                Our consulting services are designed to help businesses navigate complex challenges and achieve their goals. We offer strategic guidance and practical solutions that drive growth.
-              </p>
-              <p>
-                Through individualized attention and clear communication, our experienced consultants work side-by-side with you to design custom methodologies that deliver measurable results.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Marketing Service -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Marketing</h5>
-              <p class="card-text">
-                Our marketing services help you build your brand and reach the right audience. From digital campaigns to social media and SEO, we support your efforts to connect with customers.
-              </p>
-              <p>
-                We pride ourselves on creating targeted strategies that enhance engagement and drive conversions, ensuring your message resonates and inspires action.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Strategy Service -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Strategy</h5>
-              <p class="card-text">
-                Our strategic planning services allow you to clarify your vision while setting attainable, long-term goals. We identify opportunities, mitigate risks, and craft reliable competitive advantages.
-              </p>
-              <p>
-                With a keen focus on market trends and innovation, our team creates action plans that prepare your business for a dynamic future.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Blog Cards -->
+    <section id="blog" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">Our Stories</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506484381205-f7945653044d" alt="Seasonal Harvest" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Spring Harvest Season</h3>
+                        <p class="text-gray-600 mb-4">Discover the vibrant flavors of our spring menu featuring locally grown asparagus, early herbs, and fresh microgreens.</p>
+                        <a href="#" class="text-emerald-600 font-semibold hover:text-emerald-700">Read More →</a>
+                    </div>
+                </article>
 
-      <div class="row">
-        <!-- Technology Solutions -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Technology Solutions</h5>
-              <p class="card-text">
-                We harness the latest technology to streamline operations and drive growth. Our IT consulting, software development, cloud computing, and cybersecurity services ensure you stay ahead.
-              </p>
-              <p>
-                Our experts are dedicated to crafting comprehensive technology strategies aligned with your overall business goals.
-              </p>
+                <article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516211697506-8360dbcfe9a4" alt="Farm Events" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Farm-to-Table Events</h3>
+                        <p class="text-gray-600 mb-4">Join us for our monthly farm dinners where you can meet local farmers and enjoy a specially curated menu.</p>
+                        <a href="#" class="text-emerald-600 font-semibold hover:text-emerald-700">Read More →</a>
+                    </div>
+                </article>
             </div>
-          </div>
         </div>
-        <!-- Human Resources -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Human Resources</h5>
-              <p class="card-text">
-                Our human resources services help you attract, retain, and nurture top talent. We offer recruitment, training, performance management, and employee engagement strategies.
-              </p>
-              <p>
-                Let our seasoned HR professionals create a thriving workplace culture that boosts productivity and satisfaction.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Financial Advisory -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Financial Advisory</h5>
-              <p class="card-text">
-                Our financial advisory services are geared toward helping you achieve financial stability and growth. We provide financial planning, investment management, risk assessment, and tax strategies.
-              </p>
-              <p>
-                Our customized approach ensures solutions are tailored to support your financial vision and long-term objectives.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <!-- Operations Management -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Operations Management</h5>
-              <p class="card-text">
-                Our operations management services optimize processes to improve efficiency and drive excellence. We cover process improvement, supply chain management, and project oversight.
-              </p>
-              <p>
-                Our practical solutions ensure operational strengths that translate into real results.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Customer Service -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Customer Service</h5>
-              <p class="card-text">
-                We deliver customer service solutions that create exceptional experiences and foster lasting relationships. With comprehensive support and feedback analysis, we ensure your customers feel valued.
-              </p>
-              <p>
-                Our approach is centered on empathy, responsiveness, and quality engagement.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Training and Development -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Training and Development</h5>
-              <p class="card-text">
-                We offer in-depth training programs in leadership, technical skills, and soft skills to upskill your workforce. Our customized solutions foster continuous learning and drive improvement.
-              </p>
-              <p>
-                With expert guidance, we empower your team to overcome challenges and excel in a competitive environment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4 fade-in">
-      <h2 class="text-4xl font-semibold text-center mb-10">Our Portfolio</h2>
-      <div class="row">
-        <!-- Project One -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project One">
-            <div class="card-body">
-              <h5 class="card-title">Project One</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero, sed cursus ante dapibus diam. 
-              </p>
-              <p>
-                Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-              </p>
+    <!-- Contact Form -->
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">Get in Touch</h2>
+                <form class="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+                    <div class="group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input type="text" 
+                               class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all" placeholder="Your full name">
+                    </div>
+                    <div class="group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" 
+                               class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all" placeholder="your@email.com">
+                    </div>
+                    <div class="group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all h-32" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Send Message
+                    </button>
+                </form>
             </div>
-          </div>
         </div>
-        <!-- Project Two -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project Two">
-            <div class="card-body">
-              <h5 class="card-title">Project Two</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales.
-              </p>
-              <p>
-                Augue velit cursus nunc, id blandit nisi.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Project Three -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project Three">
-            <div class="card-body">
-              <h5 class="card-title">Project Three</h5>
-              <p class="card-text">
-                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem.
-              </p>
-              <p>
-                Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Project Four -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project Four">
-            <div class="card-body">
-              <h5 class="card-title">Project Four</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero, sed cursus.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Project Five -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project Five">
-            <div class="card-body">
-              <h5 class="card-title">Project Five</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero, sed cursus ante dapibus diam.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Project Six -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Project Six">
-            <div class="card-body">
-              <h5 class="card-title">Project Six</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent libero, sed cursus ante dapibus diam.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-16">
-    <div class="container mx-auto px-4 fade-in">
-      <h2 class="text-4xl font-semibold text-center mb-10">Testimonials</h2>
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Testimonial One -->
-          <div class="carousel-item active text-center">
-            <blockquote class="blockquote">
-              <p class="mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-              <footer class="blockquote-footer">Client One</footer>
-            </blockquote>
-          </div>
-          <!-- Testimonial Two -->
-          <div class="carousel-item text-center">
-            <blockquote class="blockquote">
-              <p class="mb-4">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
-              <footer class="blockquote-footer">Client Two</footer>
-            </blockquote>
-          </div>
-          <!-- Testimonial Three -->
-          <div class="carousel-item text-center">
-            <blockquote class="blockquote">
-              <p class="mb-4">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
-              <footer class="blockquote-footer">Client Three</footer>
-            </blockquote>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Hours</h3>
+                    <p class="mb-2">Tuesday - Sunday</p>
+                    <p class="mb-2">11:00 AM - 10:00 PM</p>
+                    <p>Closed Mondays</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <p class="mb-2">123 Farm Road</p>
+                    <p class="mb-2">Harvest Valley, CA 92123</p>
+                    <p>Tel: (555) 123-4567</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="hover:text-emerald-500 transition-colors">Instagram</a>
+                        <a href="#" class="hover:text-emerald-500 transition-colors">Facebook</a>
+                        <a href="#" class="hover:text-emerald-500 transition-colors">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <p>&copy; 2025 Local Harvest. All rights reserved.</p>
+            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Location Section with Embedded Map -->
-  <section id="location" class="py-16">
-    <div class="container mx-auto px-4 fade-in">
-      <h2 class="text-4xl font-semibold text-center mb-10">Our Location</h2>
-      <div class="styled-map mx-auto max-w-4xl">
-        <!-- Replace the src URL with your actual map embed link if available -->
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.081191024874!2d-122.41941518468185!3d37.77492927975983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085814d5b1c6c7f%3A0xa3f8b4c3a7ec947d!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1615426364771!5m2!1sen!2sus"  
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
-      <p class="text-center mt-4">
-        Visit us at 123 Main Street,<br>
-        San Francisco, CA 94105
-      </p>
-      <p class="mt-2 text-center">
-        Our office is easily accessible by public transportation and offers ample parking for visitors. Come see us and experience our friendly, community-focused approach.
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center mb-10">Get in Touch</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <p class="lead text-center">
-            We love hearing from you. Whether you have a question, comment, or simply want to get in touch, drop us a line and one of our team members will get back to you shortly.
-          </p>
-          <form class="bg-white p-4 shadow rounded mt-4">
-            <div class="mb-3">
-              <label for="name" class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Your Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Write your message here"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer with Contact Info -->
-  <footer class="bg-dark text-white py-4">
-    <div class="container mx-auto text-center">
-      <p class="mb-1">&copy; 2025 Faux Company. All rights reserved.</p>
-      <p class="mb-1">Phone: (555) 123-4567 | Email: info@fauxcompany.com</p>
-      <p>123 Main Street, San Francisco, CA 94105</p>
-      <p class="mt-2 fst-italic">Committed to serving our community with integrity and excellence.</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Example: Basic feedback alert for the contact form
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for contacting us!');
-      this.reset();
-    });
-  </script>
+    </footer>
 </body>
 </html>
